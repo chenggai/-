@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<form action="{% url 'App01:register' %}" method="post">
+    {% csrf_token %}
+
+{#    自定义表单字段，字段名必须和表单（forms中）字段名一致   #}
+    用户名：<input type="text" name="username">
+    <span>
+        {% for error in form.username.errors %}
+            <span>{{error}}</span>
+        {% endfor %}
+    </span> <br>
+    密码： <input type="password" name="password">
+    <span>
+        {% for error in form.password.errors %}
+            <span>{{error}}</span>
+        {% endfor %}
+    </span> <br>
+    确认密码： <input type="password" name="confirm_password">
+    <span>
+        {% for error in form.confirm_password.errors %}
+            <span>{{error}}</span>
+        {% endfor %}
+    </span> <br>
+    email： <input type="text" name="email">
+    <span>
+        {% for error in form.email.errors %}
+            <span>{{error}}</span>
+        {% endfor %}
+    </span> <br>
+
+    <input type="submit">
+</form>
+</body>
+</html>
